@@ -1,7 +1,14 @@
 site_name: Creative Wiki
 theme:
   name: material
+  palette:
+    scheme: slate
 nav:
   - Home: index.md
   - Foundation: foundation.md
   - Humanities Links: humanities_links.md
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
