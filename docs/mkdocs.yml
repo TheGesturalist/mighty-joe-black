@@ -1,0 +1,92 @@
+site_name: Creative Wiki
+site_url: https://catfish-toesuckers-what.web.app/
+site_author: John L. Roapes
+site_description: >-
+  A working archive: literary theory, philosophy, essays, and an ongoing
+  history of the nothoi — the bastard — from classical Athens to the present.
+
+repo_url: https://github.com/TheGesturalist/mighty-joe-black
+repo_name: TheGesturalist/mighty-joe-black
+edit_uri: edit/main/docs/
+
+copyright: Text &copy; John L. Roapes. Code CC0-1.0.
+
+theme:
+  name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+    - content.tooltips
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light
+  font:
+    text: EB Garamond
+    code: IBM Plex Mono
+
+plugins:
+  - search
+  - tags
+
+nav:
+  - Home: index.md
+  - Foundation: foundation.md
+  - Apparatus:
+      - Humanities Links: humanities_links.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - pymdownx.blocks.caption
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TheGesturalist
