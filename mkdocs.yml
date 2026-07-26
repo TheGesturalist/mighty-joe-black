@@ -1,14 +1,124 @@
-site_name: Creative Wiki
+site_name: Life — Unfinished Works
+site_url: https://catfish-toesuckers-what.web.app/
+site_author: John L. Roapes
+site_description: >-
+  A working archive: literary theory, philosophy, essays, fiction, and an
+  ongoing history of the nothoi — the bastard — from classical Athens to
+  the present.
+
+repo_url: https://github.com/TheGesturalist/mighty-joe-black
+repo_name: TheGesturalist/mighty-joe-black
+edit_uri: edit/main/docs/
+
+copyright: >-
+  Prose &copy; John L. Roapes — all rights reserved.
+  Configuration and build scripts are free to copy.
+
 theme:
   name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+    - content.tooltips
   palette:
-    scheme: slate
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: deep orange
+      toggle: { icon: material/weather-night, name: Switch to dark }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle: { icon: material/weather-sunny, name: Switch to light }
+  font:
+    text: Vollkorn
+    code: IBM Plex Mono
+
+extra_css:
+  - https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - tags
+
+  # --- Password protection -------------------------------------------
+  # Uncomment the block below to enable it. Then lock a page by adding
+  #     level: drafts
+  # to that page's frontmatter. Pages without a `level:` stay public.
+  #
+  # Passphrases are read from the environment, so they never touch git.
+  # Set DRAFTS_PASSPHRASE / PRIVATE_PASSPHRASE as GitHub Actions secrets.
+  #
+  # CAVEAT 1: this plugin always emits a brute-force warning, which
+  #   --strict treats as fatal. Once enabled, build without --strict.
+  # CAVEAT 2: only page TEXT is encrypted. Files in docs/assets/ are
+  #   served in the clear at guessable URLs no matter what. Anything that
+  #   genuinely must not leak belongs in a private repo, not here.
+  #
+  # - encryptcontent:
+  #     password_inventory:
+  #       drafts: !ENV [DRAFTS_PASSPHRASE, 'set-me-in-the-environment']
+  #       private: !ENV [PRIVATE_PASSPHRASE, 'set-me-in-the-environment']
+  #     title_prefix: '⚿'
+  #     summary: 'Locked. The text is not on this page until you unlock it.'
+  #     placeholder: 'Passphrase, then Enter'
+  #     decryption_failure_message: 'Wrong passphrase.'
+  #     search_index: 'encrypted'
+  #     remember_password: false
+
 nav:
   - Home: index.md
-  - Foundation: foundation.md
-  - Humanities Links: humanities_links.md
+  - Works:
+      - works/index.md
+      - Foundation: foundation.md
+  - Apparatus:
+      - apparatus/index.md
+      - Epigraph Concordance: apparatus/epigraphs.md
+      - Lexicon: apparatus/lexicon.md
+      - Toolshed: apparatus/toolshed.md
+  - Encyclopedia:
+      - encyclopedia/index.md
+
 markdown_extensions:
+  - abbr
+  - admonition
   - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.highlight: { anchor_linenums: true }
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist: { custom_checkbox: true }
+  - pymdownx.tilde
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TheGesturalist
