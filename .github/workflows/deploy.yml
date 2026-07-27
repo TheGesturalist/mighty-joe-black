@@ -2,31 +2,34 @@ name: Deploy to Firebase Hosting
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: pip
 
-      - name: Install dependencies
-        run: pip install mkdocs mkdocs-material
+      - name: Install pinned toolchain
+        run: pip install -r requirements.txt
 
-      - name: Build site
-        run: mkdocs build
+      - name: Regenerate derived pages
+        run: |
+          python tools/render_links.py
+          python tools/render_epigraphs.py
 
-      - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Validate and build
+        run: mkdocs build --strict
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CATFISH_TOESUCKERS_WHAT }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CATFISH_TOESUCKERS_WHAT }}
           channelId: live
           projectId: catfish-toesuckers-what
