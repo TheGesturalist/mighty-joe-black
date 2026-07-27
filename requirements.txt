@@ -1,0 +1,6 @@
+# Pinned so an upstream release can't break a deploy mid-thought.
+# MkDocs 2.0 is announced as backward-incompatible with no migration path:
+# https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/
+mkdocs==1.6.1
+mkdocs-material==9.7.7
+mkdocs-encryptcontent-plugin==3.1.0
