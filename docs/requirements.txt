@@ -1,4 +1,0 @@
-# Pinned so a surprise upstream release can't break a deploy mid-thought.
-# Bump deliberately, watch the PR preview build, then merge.
-mkdocs==1.6.1
-mkdocs-material==9.7.7
