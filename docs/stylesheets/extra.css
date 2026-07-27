@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------
+   Typography
+   Body face is set in mkdocs.yml (theme.font.text). This file only
+   handles what Material won't: a separate display face for headings,
+   measure, and the citation styling the concordance depends on.
+
+   To swap the display face, change --lu-display below and update the
+   Google Fonts <link> in mkdocs.yml extra_css/extra_head.
+
+   Pairings worth trying with Vollkorn:
+     Archivo        — grotesque workhorse, wide weight range   (current)
+     Space Grotesk  — odd, slightly retro-futurist
+     Fraunces       — variable display serif, SOFT + WONK axes
+     Public Sans    — quiet, civic, gets out of the way
+   --------------------------------------------------------------- */
+
+:root {
+  --lu-display: "Archivo", "Helvetica Neue", sans-serif;
+  --lu-rule: color-mix(in srgb, var(--md-default-fg-color) 18%, transparent);
+}
+
+/* Headings take the display face; body stays Vollkorn. */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-family: var(--lu-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Vollkorn runs small; nudge the reading size and open the leading. */
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.72;
+}
+
+/* Hold the measure near 68 characters. Long lines are the single
+   most common way a text-heavy site becomes unreadable. */
+.md-content__inner > * {
+  max-width: 40rem;
+}
+.md-content__inner > .md-typeset__table,
+.md-content__inner > table,
+.md-typeset .grid {
+  max-width: none;
+}
+
+/* Epigraphs: the concordance leans on blockquote + <cite>. */
+.md-typeset blockquote {
+  border-left: 2px solid var(--lu-rule);
+  color: var(--md-default-fg-color);
+  font-size: 1.02em;
+  font-style: normal;
+}
+
+.md-typeset cite {
+  display: block;
+  font-family: var(--lu-display);
+  font-size: 0.72rem;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  margin: -0.6rem 0 1.6rem 0.9rem;
+}
+
+.md-typeset cite::before { content: "— "; }
+
+/* Old-style figures in running text; lining figures in tables. */
+.md-typeset p { font-variant-numeric: oldstyle-num; }
+.md-typeset table { font-variant-numeric: lining-num tabular-nums; }
+
+/* Quieter tables — this site has some very long ones. */
+.md-typeset table:not([class]) th {
+  font-family: var(--lu-display);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.md-typeset table:not([class]) td { font-size: 0.72rem; }
+
+/* Placeholder / absence notes, per the house rule on visual elements. */
+.md-typeset em:only-child { color: var(--md-default-fg-color--light); }
