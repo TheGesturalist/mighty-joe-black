@@ -1,6 +1,6 @@
 ---
-relational_density: 0.85
-keywords:data_visualization, horizon, nodes, edges, network
+- relational_density: 0.85
+- keywords: data_visualization, horizon, nodes, edges, network
 ---
 
 <!DOCTYPE html>
