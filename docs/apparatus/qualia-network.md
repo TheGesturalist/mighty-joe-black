@@ -1,10 +1,6 @@
 ---
-- Apparatus:
-  - apparatus/index.md
-  - Epigraph Concordance: apparatus/epigraphs.md
-  - Lexicon: apparatus/lexicon.md
-  - Toolshed: apparatus/toolshed.md
-  - No Horizon — Qualia Network: apparatus/qualia-network.md
+relational_density: 0.85
+keywords:data_visualization, horizon, nodes, edges, network
 ---
 
 <!DOCTYPE html>
